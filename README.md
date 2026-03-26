@@ -35,7 +35,7 @@ This project supports two common approaches:
 
 ## Sample Preview
 
-"C:\Users\LOKESHBOOTU\OneDrive\Pictures\Screenshots\Screenshot 2026-03-26 184612.png"
+<img width="1604" height="666" alt="Screenshot 2026-03-26 184612" src="https://github.com/user-attachments/assets/f6446905-df07-4c9e-8b4b-47b0354f89dc" />
 
 Example sections to include:
 
