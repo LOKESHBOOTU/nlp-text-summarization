@@ -35,7 +35,7 @@ This project supports two common approaches:
 
 ## Sample Preview
 
-<img width="1604" height="666" alt="Screenshot 2026-03-26 184612" src="https://github.com/user-attachments/assets/f6446905-df07-4c9e-8b4b-47b0354f89dc" />
+<img width="1757" height="981" alt="image" src="https://github.com/user-attachments/assets/19aae778-3a4e-4b5d-ac9b-a4c940defa3a" />
 
 Example sections to include:
 
