@@ -10,19 +10,62 @@ short_description: Upload a PDF or paste text to generate extractive and abstrac
 
 # NLP Text Summarizer
 
-A simple NLP-based text summarization project with:
+A Python, FastAPI, and Gradio based project for generating extractive and abstractive summaries from plain text or PDF documents. The system allows users to paste text, upload a PDF, choose the number of extractive sentences, and download the final summary as a PDF file.
 
-- a `FastAPI` backend for extractive and abstractive summarization
-- a `Gradio` frontend for entering text or uploading a PDF
-- PDF export for the generated abstractive summary
+## What Is NLP Text Summarization
+
+NLP text summarization is the process of reducing a large piece of text into a shorter version while preserving the main meaning and important information. It is a Natural Language Processing task used to help readers understand lengthy content quickly and efficiently.
+
+This project supports two common approaches:
+
+- Extractive summarization, which selects the most important sentences from the original text
+- Abstractive summarization, which generates a shorter summary in a more natural rewritten form
+
+## Live Demo
+
+[Click here for Live Demo](https://huggingface.co/spaces/Lokeshbootu/nlp-text-summarizer)
+
+## How It Works
+
+1. Enter text manually or upload a PDF file.
+2. Choose the number of extractive summary sentences.
+3. Click `Generate Summary`.
+4. View both extractive and abstractive summaries.
+5. Download the generated summary as a PDF.
+
+## Sample Preview
+
+Add screenshots of the app interface and generated output here after capturing them from the live demo or local run.
+
+Example sections to include:
+
+- Main interface with text input and PDF upload
+- Output preview showing extractive summary, abstractive summary, and download option
 
 ## Features
 
-- Extractive summarization
-- Abstractive summarization using `transformers`
-- PDF text extraction with `PyPDF2`
+- Extractive text summarization
+- Abstractive text summarization using Transformers
+- PDF upload and text extraction
 - Download summary as PDF
-- Local development support in VS Code
+- FastAPI backend for summarization
+- Gradio based interactive interface
+
+## Applications
+
+- Summarizing news articles
+- Generating short notes from research papers
+- Reducing long reports into quick overviews
+- Summarizing educational content for students
+- Creating concise summaries from business documents
+- Extracting key points from uploaded PDF files
+
+## Why This Project Is Useful
+
+- Saves time when reading long content
+- Helps users focus on key information
+- Improves productivity for students, researchers, and professionals
+- Makes document review simpler and faster
 
 ## Project Structure
 
@@ -34,14 +77,73 @@ Text summarization/
 |-- requirements.txt
 |-- Dockerfile
 |-- README.md
+|-- .gitignore
 `-- .vscode/
 ```
 
-## Live Demo
+## Requirements
 
-Live demo URL:
+- Python 3.10 or later
+- pip
 
-- [https://huggingface.co/spaces/Lokeshbootu/nlp-text-summarizer](https://huggingface.co/spaces/Lokeshbootu/nlp-text-summarizer)
+## Installation
+
+```bash
+pip install -r requirements.txt
+```
+
+If you do not have a virtual environment yet, create one first:
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+## Run Locally
+
+Run the backend in one terminal:
+
+```bash
+uvicorn api:app --reload --host 127.0.0.1 --port 8000
+```
+
+Run the frontend in another terminal:
+
+```bash
+python app.py
+```
+
+Then open the app in your browser:
+
+[http://127.0.0.1:7860](http://127.0.0.1:7860)
+
+## API Endpoints
+
+- `GET /`
+- `GET /health`
+- `POST /summarize`
+
+API docs:
+
+[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+## Input Options
+
+You can use either of the following:
+
+- Plain text entered into the text box
+- PDF document upload
+
+## Types of Summarization Used
+
+### Extractive Summarization
+
+Extractive summarization identifies the most relevant sentences from the original text and combines them into a shorter summary without changing the wording much.
+
+### Abstractive Summarization
+
+Abstractive summarization uses a language model to generate a new, shorter version of the text that captures the core meaning in a more human-like way.
 
 ## Tech Stack
 
@@ -55,159 +157,36 @@ Live demo URL:
 - PyPDF2
 - ReportLab
 
-## Requirements
+## Deployment
 
-- Python 3.10 or later recommended
-- VS Code
-- A virtual environment in `venv`
+This project is configured for deployment on Hugging Face Spaces using Docker.
 
-## Installation
+## Future Scope
 
-Open the project folder in VS Code, then run:
+- Support for more file formats such as DOCX and TXT
+- Multi-language summarization
+- User selectable summary length presets
+- Better handling of very large documents
+- Improved model performance with advanced transformer models
+- Keyword extraction and topic detection
+- User authentication and saved summary history
+- Speech to text summarization for audio inputs
 
-```powershell
-.\venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
+## Limitations
 
-If the virtual environment does not exist yet, create it first:
+- Abstractive summary quality depends on the underlying model
+- Very large documents may take more time to process
+- The first run may be slower because the model needs to load
+- Internet restrictions may affect model or NLTK resource downloads in some environments
 
-```powershell
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
+## Conclusion
 
-## Run in VS Code
-
-This project is already configured with:
-
-- [launch.json](C:\Users\LOKESHBOOTU\OneDrive\Desktop\Text summarization\.vscode\launch.json)
-- [settings.json](C:\Users\LOKESHBOOTU\OneDrive\Desktop\Text summarization\.vscode\settings.json)
-
-### Option 1: Run from the VS Code Run Button
-
-1. Open the folder in VS Code.
-2. Open the `Run and Debug` panel.
-3. Select `Run API + UI`.
-4. Click the green Run button.
-
-This starts:
-
-- FastAPI backend at [http://127.0.0.1:8000](http://127.0.0.1:8000)
-- Gradio frontend at [http://127.0.0.1:7860](http://127.0.0.1:7860)
-
-### Option 2: Run Manually in Two Terminals
-
-Terminal 1:
-
-```powershell
-.\venv\Scripts\Activate.ps1
-uvicorn api:app --reload --host 127.0.0.1 --port 8000
-```
-
-Terminal 2:
-
-```powershell
-.\venv\Scripts\Activate.ps1
-python app.py
-```
-
-## API Endpoints
-
-- `GET /` - home route
-- `GET /health` - health check
-- `POST /summarize` - returns extractive and abstractive summaries
-
-API docs:
-
-- [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-
-## How to Use
-
-1. Start the backend and frontend.
-2. Open the Gradio UI in your browser.
-3. Enter text or upload a PDF.
-4. Choose the number of extractive sentences.
-5. Click `Generate Summary`.
-6. View the extractive and abstractive summaries.
-7. Download the summary as a PDF.
+This project demonstrates how NLP can be used to make long text content easier to understand and faster to review. By combining extractive and abstractive approaches with a simple web interface, it provides a practical and user-friendly text summarization solution.
 
 ## Notes
 
-- The frontend reads the backend URL from the `API_URL` environment variable.
-- For local development, the default backend URL is `http://127.0.0.1:8000/summarize`.
-- The first run may take time because the summarization model may need to load.
-- `nltk` resources such as `punkt` and `stopwords` are downloaded automatically on startup.
-
-## Docker
-
-You can also run the project with Docker.
-
-Build:
-
-```powershell
-docker build -t text-summarizer .
-```
-
-Run:
-
-```powershell
-docker run -p 7860:7860 -p 8000:8000 text-summarizer
-```
-
-## Deploy to Hugging Face Spaces
-
-This repository is prepared for a `Docker` Space.
-
-### Steps
-
-1. Create a new Space on Hugging Face.
-2. Choose `Docker` as the Space SDK.
-3. Name it something like `nlp-text-summarizer`.
-4. Upload or push the files from this repository.
-5. Wait for the build to finish.
-6. Open the generated public Space URL.
-
-### Expected public URL
-
-- `https://huggingface.co/spaces/<your-username>/nlp-text-summarizer`
-
-### Notes for deployment
-
-- The `README.md` already includes the Hugging Face Spaces YAML config block.
-- The app is exposed on port `7860`, which Hugging Face uses as the public app port.
-- The FastAPI backend runs internally on port `8000` inside the same container.
-- The summarization model may take time to download during the first build or first run.
-
-## Troubleshooting
-
-### `ModuleNotFoundError` or missing package errors
-
-Run:
-
-```powershell
-pip install -r requirements.txt
-```
-
-### Frontend shows `API not running`
-
-Make sure the FastAPI server is running on port `8000`.
-
-### VS Code does not detect the interpreter
-
-Open Command Palette and choose:
-
-```text
-Python: Select Interpreter
-```
-
-Then select:
-
-```text
-venv\Scripts\python.exe
-```
-
-## Author
-
-Update this section with your name, GitHub profile, or portfolio link.
+- Do not upload `venv/`
+- Do not upload `__pycache__/`
+- Do not upload `.vscode/`
+- Install dependencies from `requirements.txt` after cloning the repository
+- The first run may take longer because the summarization model may need to load
