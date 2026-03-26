@@ -1,12 +1,3 @@
----
-title: NLP Text Summarizer
-emoji: 📄
-colorFrom: blue
-colorTo: green
-sdk: docker
-app_port: 7860
-short_description: Upload a PDF or paste text to generate extractive and abstractive summaries.
----
 
 # NLP Text Summarizer
 
