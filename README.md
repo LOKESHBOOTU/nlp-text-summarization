@@ -35,7 +35,7 @@ This project supports two common approaches:
 
 ## Sample Preview
 
-Add screenshots of the app interface and generated output here after capturing them from the live demo or local run.
+"C:\Users\LOKESHBOOTU\OneDrive\Pictures\Screenshots\Screenshot 2026-03-26 184612.png"
 
 Example sections to include:
 
